@@ -188,7 +188,7 @@ ENDPROC(__boot_secondary_core)
  * registers.
  */
 __enable_mmu:
-#ifdef CONFIG_ALIGNMENT_TRAP
+#if defined(CONFIG_ALIGNMENT_TRAP) && __LINUX_ARM_ARCH__ < 6
 	orr	r0, r0, #CR_A
 #else
 	bic	r0, r0, #CR_A
